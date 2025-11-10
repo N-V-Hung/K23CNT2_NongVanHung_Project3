@@ -12,30 +12,36 @@
     <name>K23CNT2.nvh.Lesson02</name>
     <description>Spring Boot Lesson 02 - IoC / DI / Annotation (Java 24)</description>
 
-    <!-- Spring Boot parent -->
+    <!-- ✅ Spring Boot parent -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.4</version>
-        <relativePath/> <!-- giữ nguyên dòng này -->
+        <relativePath/>
     </parent>
 
-
-    <!-- ✅ Sử dụng Java 24 -->
+    <!-- ✅ Cấu hình Java 24 -->
     <properties>
         <java.version>24</java.version>
+        <maven.compiler.source>24</maven.compiler.source>
+        <maven.compiler.target>24</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>24</maven.compiler.release>
     </properties>
 
     <dependencies>
-        <!-- Web Starter -->
+        <!-- Spring Boot Starter (chứa @Service, @Component, @Autowired, ...) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Spring Web Starter (nếu bạn có Controller hoặc Rest API) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Lombok -->
+        <!-- Lombok (giúp giảm code getter/setter, constructor, etc.) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -52,41 +58,33 @@
 
     <build>
         <plugins>
-            <!-- Spring Boot Plugin -->
+            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- ✅ Compiler plugin khai báo rõ ràng cho Java 24 -->
+            <!-- ✅ Compiler Plugin hỗ trợ Java 24 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
                     <release>24</release>
+                    <compilerArgs>
+                        <!-- Cho phép chạy với bản preview (nếu bạn bật feature preview của Java 24) -->
+                        <arg>--enable-preview</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
 
-            <!-- ✅ Toolchains plugin (đảm bảo dùng đúng JDK 24 nếu có nhiều JDK trong máy) -->
+            <!-- ✅ Surefire Plugin để test với Java 24 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-toolchains-plugin</artifactId>
-                <version>3.2.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>toolchain</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
                 <configuration>
-                    <toolchains>
-                        <jdk>
-                            <version>24</version>
-                            <vendor>openjdk</vendor>
-                        </jdk>
-                    </toolchains>
+                    <argLine>--enable-preview</argLine>
                 </configuration>
             </plugin>
         </plugins>
