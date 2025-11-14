@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Giới thiệu Thymeleaf</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+</head>
+<body style="background: #f1f1f1">
+<header th:fragment="header" class="container d-flex align-items-center bg-white">
+    <a href="/">
+        <img src="https://devmaster.edu.vn/images/logo.png"
+             alt="Devmaster Academy">
+    </a>
+       <nav class="navbar navbar-expand-lg bg-body-tertiary">
+           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+               <li class="nav-item">
+                   <a th:href="@{/home}" class="nav-link">Trang chu</a>
+               </li>
+               <li class="nav-item">
+                   <a th:href="@{/about}" class="nav-link">Gioi thieu</a>
+               </li>
+               <li class="nav-item">
+                   <a th:href="@{/contact}" class="nav-link">Lien he</a>
+               </li>
+           </ul>
+       </nav>
+</header>
+<footer th:fragment="footer" class="container d-flex align-items-center alert alert-danger">
+    <div>
+        <img src="https://devmaster.edu.vn/images/logo.png" alt="Devmaster Academy" style="width: 50px">
+        <address>@ 2025 <b>Devmaster Academy</b></address>
+    </div>
+    <nav th:insert="fragment/_layout::menu"></nav>
+</footer>
+
+<nav th:fragment="menu">
+    <ul>
+        <li><a th:href="@{/home}">Trang chu</a></li>
+        <li><a th:href="@{/services}">Dich vu</a></li>
+        <li><a th:href="@{/contact">Lien he</a></li>
+    </ul>
+</nav>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
