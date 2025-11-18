@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpost"
+          content="width=device-width, user-scalable=no,initial-scale=1.0, maximun-scale=1.0, minimun-scaleble=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Sua thong tin sinh vien </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body style="background: gray">
+    <header class="container bg-white">
+        <div class="logo">
+            <img src="https://devmaster.edu.vn/images/logo.png" alt="Devmaster Academy"/>
+        </div>
+    </header>
+    <section class="container bg-white py-3">
+        <form th:action="@{/students}" th:object="${stuent}" method="post">
+            <div class="cart">
+                <div class="card-header">
+                    <h2>THEM MOI THONG TIN SINH VIEN </h2>
+                </div>
+                <div class="card-body">
+                    <input type="hidden" th:field="*{id}" />
+                    <div class="mb-3 row">
+                        <label for="name" class="col-sm-2 col-form-lable">Name </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="name" id="name" th:field="*{name}"/>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="email" class="col-sm-2 col-form-lable">Email </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="email" id="email" th:field="*{email}"/>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="age" class="col-sm-2 col-form-lable">Age </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="age" id="age" th:field="*{age}"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="/studnets" class="btn btn-secondary">Back</a>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

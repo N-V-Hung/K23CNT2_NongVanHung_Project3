@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewpost"
+    content="width=device-width, user-scalable=no,initial-scale=1.0, maximun-scale=1.0, minimun-scaleble=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Danh sach sinh vien</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body style="background: gray">
+    <header class="container bg-white">
+        <div class="logo">
+            <img src="https://devmaster.edu.vn/images/logo.png" alt="Devmaster Academy"/>
+        </div>
+    </header>
+    <section class="contaoner bg-white p-3">
+        <h2>DANH SACH SINH VIEN</h2>
+        <hr/>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="student : ${student}">
+                    <td th:text="${student.id}">1</td>
+                    <td th:text="${student.name}">Nong Van Hung</td>
+                    <td th:text="${student.email}">hung@gmail.com</td>
+                    <td th:text="$student.age}">20</td>
+                    <td>
+                        <a th:href="@{/student/edit/{id}(id=${student.id})}">Edit</a>
+                        <a th:href="@{/student/delete/{id}(id=${student.id})}" onclick="return confirm('Ban co muon xoa khong?">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/students/add-new" class="btn btn-primary">Add new Student</a>
+    </section>
+
+</body>
+</html>
