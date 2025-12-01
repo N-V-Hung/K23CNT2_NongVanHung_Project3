@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thanh Toán | Shop Quần Áo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .product-img { width: 80px; height: 80px; object-fit: cover; }
+        .total { font-size: 22px; font-weight: bold; color: #e74c3c; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/">Shop Quần Áo</a>
+    </div>
+</nav>
+
+<div class="container mt-5">
+    <h3 class="fw-bold mb-4">Thanh Toán</h3>
+
+    <div class="row">
+
+        <!-- Giỏ hàng -->
+        <div class="col-md-6">
+            <h5>Đơn hàng của bạn</h5>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>SL</th>
+                    <th>Giá</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${cartItems}">
+                    <td>
+                        <img th:src="@{${item.nvh_product.nvh_image}}" class="product-img me-2">
+                        <span th:text="${item.nvh_product.nvh_name}"></span>
+                    </td>
+                    <td th:text="${item.nvh_quantity}"></td>
+                    <td th:text="${#numbers.formatDecimal(item.nvh_product.nvh_price * item.nvh_quantity,0,'POINT',0,'COMMA')} + ' đ'"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="text-end total">
+                Tổng: <span th:text="${#numbers.formatDecimal(total,0,'POINT',0,'COMMA')} + ' đ'"></span>
+            </div>
+        </div>
+
+        <!-- Form thông tin -->
+        <div class="col-md-6">
+            <h5>Thông tin nhận hàng</h5>
+            <form th:action="@{/checkout/confirm}" method="post">
+                <div class="mb-3">
+                    <label>Tên</label>
+                    <input type="text" name="name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label>Số điện thoại</label>
+                    <input type="text" name="phone" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label>Địa chỉ</label>
+                    <textarea name="address" class="form-control" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Xác nhận thanh toán</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    © 2024 Shop Quần Áo
+</footer>
+
+</body>
+</html>

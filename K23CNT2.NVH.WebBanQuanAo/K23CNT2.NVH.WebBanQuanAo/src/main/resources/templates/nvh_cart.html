@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Giỏ Hàng | Shop Quần Áo</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .product-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .btn-update, .btn-remove {
+            padding: 5px 12px;
+        }
+        .total {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="/">Shop Quần Áo</a>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="/">Trang Chủ</a></li>
+            <li class="nav-item"><a class="nav-link" href="/auth/login">Đăng Nhập</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- MAIN -->
+<div class="container mt-5">
+    <h3 class="fw-bold mb-4">Giỏ Hàng Của Bạn</h3>
+
+    <div th:if="${#lists.isEmpty(cartItems)}">
+        <p class="text-center">Giỏ hàng trống. <a href="/">Tiếp tục mua sắm</a></p>
+    </div>
+
+    <div th:if="${!#lists.isEmpty(cartItems)}">
+        <form th:action="@{/cart/update}" method="post">
+            <table class="table table-bordered align-middle">
+                <thead>
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng</th>
+                    <th>Hành động</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item : ${cartItems}">
+                    <td>
+                        <img th:src="@{${item.nvh_product.nvh_image}}" class="product-img me-2">
+                        <span th:text="${item.nvh_product.nvh_name}"></span>
+                    </td>
+                    <td th:text="${#numbers.formatDecimal(item.nvh_product.nvh_price,0,'POINT',0,'COMMA')} + ' đ'"></td>
+                    <td>
+                        <input type="number" name="nvhgQuantities" th:value="${item.nvh_quantity}" min="1" class="form-control w-50 d-inline">
+                        <input type="hidden" name="nvhItemIds" th:value="${item.nvh_id}">
+                    </td>
+                    <td th:text="${#numbers.formatDecimal(item.nvh_product.nvh_price * item.nvh_quantity,0,'POINT',0,'COMMA')} + ' đ'"></td>
+                    <td>
+                        <a th:href="@{'/cart/remove/' + ${item.nvh_id}}" class="btn btn-danger btn-remove">Xóa</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="text-end mb-3">
+                <span class="total">Tổng:
+                    <span th:text="${#numbers.formatDecimal(total,0,'POINT',0,'COMMA')} + ' đ'"></span>
+                </span>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <a href="/" class="btn btn-secondary">Tiếp tục mua sắm</a>
+                <div>
+                    <button type="submit" class="btn btn-primary">Cập nhật số lượng</button>
+                    <a href="/checkout" class="btn btn-success">Thanh Toán</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    © 2024 Shop Quần Áo | Thiết kế bởi Bạn
+</footer>
+
+</body>
+</html>
