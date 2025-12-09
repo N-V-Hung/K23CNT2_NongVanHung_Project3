@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b43ef538-f086-4990-abdd-d8a468a2b221" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/K23CNT2.NVH.WebBanQuanAo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Banner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Blog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Cart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Cart_Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Inventory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Order_Detail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Order_Status_Log.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Payment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_ProductPromotion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Product_Image.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Promotion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Review.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_StockImport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Users.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Entity/Nvh_Wishlist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_BannerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_BlogRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_CartItemRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_CartRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_CategoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_InventoryRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_OrderDetailRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_OrderRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_OrderStatusLogRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_PaymentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_ProductImageRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_ProductPromotionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_ProductRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_PromotionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_ReviewRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_StockImportRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Repository/Nvh_WishlistRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Server/Nvh_CartService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Server/Nvh_CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Server/Nvh_OrderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Server/Nvh_ProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/K23CNT2.NVH.WebBanQuanAo/src/main/java/K23CNT2/NVH/WebBanQuanAo/Nvh_Server/Nvh_UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../K23CNT2.nvhDay08/.idea/K23CNT2.nvhDay08.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;N-V-Hung&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/N-V-Hung/K23CNT2_NongVanHung_Project3.git&quot;,
+    &quot;accountId&quot;: &quot;f933fd57-a127-42d2-8de6-02959524e107&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="369ahDPoc5zwbvtiAr6RvRfQk6k" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/dev/K23CNT2_PRJ3/K23CNT2_NongVanHung_Project3/K23CNT2.nvh.WebBanQuanAo",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="K23CNT2.NVH.WebBanQuanAo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="K23CNT2.NVH.WebBanQuanAo" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b43ef538-f086-4990-abdd-d8a468a2b221" name="Changes" comment="" />
+      <created>1764421359970</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1764421359970</updated>
+    </task>
+    <servers />
+  </component>
+</project>

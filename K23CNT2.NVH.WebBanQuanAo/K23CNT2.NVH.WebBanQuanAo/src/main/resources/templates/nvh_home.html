@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Trang chủ - NVH Shop</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <style>
+        .product-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            transition: 0.3s;
+        }
+        .product-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .product-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="bg-dark text-white p-3 mb-4">
+    <div class="container d-flex justify-content-between">
+        <h3>🛍 NVH FASHION SHOP</h3>
+
+        <div>
+            <!-- Nếu chưa đăng nhập -->
+            <span th:if="${user == null}">
+                <a th:href="@{/auth/login}" class="btn btn-outline-light">Đăng nhập</a>
+                <a th:href="@{/auth/register}" class="btn btn-primary">Đăng ký</a>
+            </span>
+
+            <!-- Nếu đã đăng nhập -->
+            <span th:if="${user != null}">
+                <span>👤 <strong th:text="${user.nvhFullName}"></strong></span>
+
+                <a class="btn btn-success ms-2" th:href="@{/user/home}">Trang người dùng</a>
+
+                <a class="btn btn-warning ms-2"
+                   th:if="${user.nvhRole == 'ADMIN'}"
+                   th:href="@{/admin/dashboard}">
+                   Quản trị Admin
+                </a>
+
+                <a th:href="@{/logout}" class="btn btn-danger ms-2">Đăng xuất</a>
+            </span>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <h2 class="mb-4 text-center">✨ SẢN PHẨM MỚI NHẤT ✨</h2>
+
+    <div class="row">
+
+        <!-- Lặp sản phẩm -->
+        <div class="col-md-3 mb-4" th:each="p : ${products}">
+
+            <div class="product-card">
+
+                <img class="product-img"
+                     th:src="@{|/images/${p.nvhImage}|}"
+                     alt="Ảnh sản phẩm">
+
+                <h5 class="mt-3" th:text="${p.nvhName}"></h5>
+
+                <p class="text-danger fw-bold">
+                    <span th:text="${#numbers.formatDecimal(p.nvhPrice,0,'COMMA',0,'POINT')}"></span> ₫
+                </p>
+
+                <a class="btn btn-primary w-100"
+                   th:href="@{'/product/' + ${p.nvhId}}">
+                    Xem chi tiết
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

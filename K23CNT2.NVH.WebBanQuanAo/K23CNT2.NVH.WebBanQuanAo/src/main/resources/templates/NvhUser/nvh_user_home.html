@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NVH SHOP - Trang Chủ</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* --- HEADER STYLE --- */
+        .nvh-search-box {
+            width: 480px;
+            border-radius: 25px;
+            padding: 10px 20px;
+            background: #f2f2f2;
+        }
+
+        .nvh-header-icon {
+            font-size: 20px;
+            margin-left: 18px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .nvh-header-icon:hover {
+            color: #0d6efd;
+        }
+
+        /* --- SLIDER --- */
+        .nvh-slider img {
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* --- CATEGORY --- */
+        .nvh-category-card {
+            transition: 0.25s;
+        }
+
+        .nvh-category-card:hover {
+            transform: translateY(-7px);
+        }
+
+        /* --- PRODUCTS --- */
+        .nvh-product-card img {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .nvh-sale-badge {
+            font-size: 14px;
+            padding: 6px 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ====================== HEADER ====================== -->
+<nav class="navbar navbar-light bg-white shadow-sm py-3 sticky-top">
+    <div class="container d-flex align-items-center">
+
+        <!-- LOGO -->
+        <a class="navbar-brand fw-bold fs-4 text-danger">
+            <i class="fa-solid fa-shirt"></i> NVHSHOP
+        </a>
+
+        <!-- SEARCH BAR -->
+        <form class="mx-auto" th:action="@{/nvh-search}" method="get">
+            <input class="form-control nvh-search-box"
+                   type="text"
+                   name="keyword"
+                   placeholder="Tìm kiếm sản phẩm, danh mục..."
+                   required>
+        </form>
+
+        <!-- ICONS -->
+        <div class="d-flex align-items-center">
+
+            <a class="nvh-header-icon" th:href="@{/nvh-cart}">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+
+            <a class="nvh-header-icon" th:href="@{/nvh-orders}">
+                <i class="fa-solid fa-clipboard-list"></i>
+            </a>
+
+            <a class="nvh-header-icon" th:href="@{/nvh-profile}">
+                <i class="fa-solid fa-user"></i>
+            </a>
+
+            <a class="nvh-header-icon text-danger" th:href="@{/nvh-logout}">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+
+        </div>
+    </div>
+</nav>
+
+<!-- ====================== NAV MENU ====================== -->
+<div class="bg-light py-2 shadow-sm mb-3">
+    <div class="container d-flex justify-content-center gap-4 fw-bold">
+
+        <a class="text-decoration-none text-dark" href="/nvh-user-home">Trang Chủ</a>
+        <a class="text-decoration-none text-dark">New Food</a>
+        <a class="text-decoration-none text-dark">Phổ Biến</a>
+        <a class="text-decoration-none text-danger">Khuyến Mãi</a>
+        <a class="text-decoration-none text-dark">Giới Thiệu</a>
+        <a class="text-decoration-none text-dark">Liên Hệ</a>
+
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- ====================== SLIDER / BANNER ====================== -->
+    <div id="nvhMainSlider" class="carousel slide mb-4 nvh-slider" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <img src="https://i.imgur.com/K7yU2m0.jpeg" class="d-block w-100">
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://i.imgur.com/6NR0zRf.jpeg" class="d-block w-100">
+            </div>
+
+            <div class="carousel-item">
+                <img src="https://i.imgur.com/rGZ9Xlc.jpeg" class="d-block w-100">
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#nvhMainSlider" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#nvhMainSlider" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+
+
+    <!-- ====================== FLASH SALE ====================== -->
+    <h4 class="fw-bold text-danger mb-3">🔥 Khuyến Mãi Hôm Nay</h4>
+    <div class="row">
+
+        <div class="col-md-3 mb-4" th:each="p : ${nvhSaleProducts}">
+            <div class="card nvh-product-card shadow-sm">
+
+                <div class="position-relative">
+                    <img th:src="${p.nvhImage}">
+                    <span class="badge bg-danger nvh-sale-badge position-absolute top-0 end-0 m-2">
+                        -<span th:text="${p.nvhDiscount}"></span>%
+                    </span>
+                </div>
+
+                <div class="p-3">
+
+                    <h6 th:text="${p.nvhName}"></h6>
+
+                    <p class="text-decoration-line-through text-muted"
+                       th:text="${#numbers.formatDecimal(p.nvhPrice,0,'POINT',0,'COMMA')} + ' đ'"></p>
+
+                    <p class="fw-bold text-danger"
+                       th:text="${#numbers.formatDecimal(p.nvhSalePrice,0,'POINT',0,'COMMA')} + ' đ'"></p>
+
+                    <a class="btn btn-danger btn-sm w-100"
+                       th:href="@{'/nvh-product/' + ${p.nvhId}}">
+                        Xem chi tiết
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- NO SALE PRODUCT -->
+        <div class="col-12" th:if="${#lists.isEmpty(nvhSaleProducts)}">
+            <div class="alert alert-warning">Hiện chưa có sản phẩm khuyến mãi.</div>
+        </div>
+
+    </div>
+
+
+    <!-- ====================== CATEGORY ====================== -->
+    <h4 class="fw-bold mt-4 mb-3">Danh Mục</h4>
+    <div class="row">
+
+        <div class="col-md-2 col-6 mb-3" th:each="c : ${nvhCategories}">
+            <div class="card text-center p-3 nvh-category-card shadow-sm">
+                <h6 th:text="${c.nvhName}"></h6>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- ====================== PRODUCT LIST ====================== -->
+    <h4 class="fw-bold mt-4 mb-3">Món Ngon Hôm Nay</h4>
+    <div class="row">
+
+        <div class="col-md-3 mb-4" th:each="p : ${nvhProducts}">
+            <div class="card nvh-product-card shadow-sm">
+
+                <img th:src="${p.nvhImage}">
+
+                <div class="p-3">
+                    <h6 th:text="${p.nvhName}"></h6>
+                    <p class="text-danger fw-bold"
+                       th:text="${#numbers.formatDecimal(p.nvhPrice,0,'POINT',0,'COMMA')} + ' đ'"></p>
+
+                    <a class="btn btn-primary btn-sm w-100"
+                       th:href="@{'/nvh-product/' + ${p.nvhId}}">
+                        Xem chi tiết
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- ====================== NEWS ====================== -->
+    <h4 class="fw-bold mt-4 mb-3">Tin Tức Mới</h4>
+    <div class="row">
+
+        <div class="col-md-4 mb-4" th:each="n : ${nvhNews}">
+            <div class="card shadow-sm h-100">
+
+                <img class="card-img-top" style="height:180px; object-fit:cover;"
+                     th:src="${n.nvhImage}">
+
+                <div class="p-3">
+                    <h6 th:text="${n.nvhName}"></h6>
+                    <p th:text="${n.nvhDescription}"></p>
+
+                    <a class="btn btn-outline-primary btn-sm"
+                       th:href="@{'/nvh-news/' + ${n.nvhId}}">
+                        Đọc tiếp
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
