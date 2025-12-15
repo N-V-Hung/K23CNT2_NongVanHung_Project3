@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:insert="nvhLayout/nvh-admin-layout :: head('Dashboard')"></div>
+</head>
+
+<body>
+
+<div th:insert="nvhLayout/nvh-admin-layout :: sidebar('home')"></div>
+<div th:insert="nvhLayout/nvh-admin-layout :: topbar"></div>
+
+<div class="nvh-content">
+
+    <h2 class="mb-3">
+        👋 Xin chào,
+        <span class="text-primary" th:text="${nvhAdminName}">Admin</span>
+    </h2>
+
+    <hr>
+
+    <div class="row text-center mt-4">
+
+        <!-- Tổng sản phẩm -->
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm bg-primary text-white">
+                <div class="card-body">
+                    <h5>📦 Sản phẩm</h5>
+                    <h2 th:text="${totalProducts}">0</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tổng đơn hàng -->
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm bg-success text-white">
+                <div class="card-body">
+                    <h5>🧾 Đơn hàng</h5>
+                    <h2 th:text="${totalOrders}">0</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Doanh thu -->
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm bg-warning text-dark">
+                <div class="card-body">
+                    <h5>💰 Doanh thu</h5>
+                    <h2 th:text="${#numbers.formatDecimal(totalRevenue, 0, 'COMMA', 0, 'POINT')} + '₫'">
+                        0₫
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tổng khách hàng -->
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm bg-info text-dark">
+                <div class="card-body">
+                    <h5>👤 Khách hàng</h5>
+                    <h2 th:text="${totalCustomers}">0</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

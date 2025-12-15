@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết đơn hàng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+    <a href="/nvh-admin/orders" class="btn btn-secondary mb-3">⬅ Quay lại</a>
+
+    <h2>📄 Chi tiết đơn hàng</h2>
+
+    <p>Mã đơn: <strong th:text="${order.nvhCode}"></strong></p>
+    <p>ID khách: <strong th:text="${order.nvhIdcustomer}"></strong></p>
+    <p>Tổng tiền: <strong th:text="${order.nvhTotalMoney}"></strong></p>
+
+    <table class="table table-bordered mt-4">
+        <thead class="table-secondary">
+        <tr>
+            <th>ID SP</th>
+            <th>Giá</th>
+            <th>Số lượng</th>
+            <th>Tổng</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="d : ${details}">
+            <td th:text="${d.nvhIdproduct}"></td>
+            <td th:text="${d.nvhPrice}"></td>
+            <td th:text="${d.nvhQty}"></td>
+            <td th:text="${d.nvhTotal}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h4>Cập nhật trạng thái đơn hàng</h4>
+
+    <form action="/nvh-admin/orders/update-status" method="post" class="mb-3">
+
+        <input type="hidden" name="id" th:value="${order.nvhId}">
+
+        <select name="status" class="form-select w-25 d-inline-block">
+
+            <option value="PENDING"
+                    th:selected="${order.nvhStatus?.name() == 'PENDING'}">⏳ Chờ xác nhận</option>
+
+            <option value="PAID"
+                    th:selected="${order.nvhStatus?.name() == 'PAID'}">💵 Đã thanh toán</option>
+
+            <option value="SHIPPING"
+                    th:selected="${order.nvhStatus?.name() == 'SHIPPING'}">🚚 Đang giao</option>
+
+            <option value="DONE"
+                    th:selected="${order.nvhStatus?.name() == 'DONE'}">✔ Hoàn thành</option>
+
+            <option value="CANCEL"
+                    th:selected="${order.nvhStatus?.name() == 'CANCEL'}">❌ Đã hủy</option>
+
+        </select>
+
+        <button class="btn btn-primary">Cập nhật</button>
+    </form>
+
+</div>
+
+</body>
+</html>

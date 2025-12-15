@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm / Sửa Mã Giảm Giá</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-4">
+
+    <div class="card shadow p-4">
+
+        <h3 class="mb-3 text-primary"
+            th:text="${nvhCoupon.nvhId == null ? 'Thêm Mã Giảm Giá' : 'Sửa Mã Giảm Giá'}"></h3>
+
+        <form th:action="@{/nvh-admin/coupons/save}" th:object="${nvhCoupon}" method="post">
+
+            <input type="hidden" th:field="*{nvhId}">
+
+            <!-- Mã giảm giá -->
+            <div class="mb-3">
+                <label class="form-label">Mã</label>
+                <input type="text" class="form-control" th:field="*{nvhCode}" required>
+            </div>
+
+            <!-- Loại giảm giá -->
+            <div class="mb-3">
+                <label class="form-label">Loại</label>
+                <select class="form-select" th:field="*{nvhType}" required>
+                    <option value="PERCENT">Phần trăm (%)</option>
+                    <option value="AMOUNT">Tiền mặt (VND)</option>
+                </select>
+            </div>
+
+            <!-- Giá trị giảm -->
+            <div class="mb-3">
+                <label class="form-label">Giá trị giảm</label>
+                <input type="number" class="form-control" th:field="*{nvhValue}" required>
+            </div>
+
+            <!-- Số lượng mã -->
+            <div class="mb-3">
+                <label class="form-label">Số lượng</label>
+                <input type="number" class="form-control" th:field="*{nvhQuantity}" required>
+            </div>
+
+            <!-- Ngày bắt đầu -->
+            <div class="mb-3">
+                <label class="form-label">Ngày bắt đầu</label>
+                <input type="date" class="form-control" th:field="*{nvhStartDate}" required>
+            </div>
+
+            <!-- Ngày kết thúc -->
+            <div class="mb-3">
+                <label class="form-label">Ngày kết thúc</label>
+                <input type="date" class="form-control" th:field="*{nvhEndDate}" required>
+            </div>
+
+
+            <!-- Ghi chú -->
+            <div class="mb-3">
+                <label class="form-label">Ghi chú</label>
+                <textarea class="form-control" th:field="*{nvhNotes}" rows="3"></textarea>
+            </div>
+
+            <button class="btn btn-success">Lưu</button>
+            <a href="/nvh-admin/coupons" class="btn btn-secondary">Quay lại</a>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

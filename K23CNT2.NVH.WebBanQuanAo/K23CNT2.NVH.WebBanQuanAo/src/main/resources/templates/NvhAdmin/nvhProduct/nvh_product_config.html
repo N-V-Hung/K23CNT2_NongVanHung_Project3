@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm cấu hình sản phẩm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-4">
+
+    <h3 class="mb-3">🛠 Thêm size / màu cho sản phẩm</h3>
+
+    <h4 th:text="${product.nvhName}" class="text-primary mb-3"></h4>
+
+    <form th:action="@{/admin/product-config/add}" method="post" class="row g-3">
+
+        <input type="hidden" name="productId" th:value="${product.nvhId}">
+
+        <div class="col-md-4">
+            <label>Cấu hình:</label>
+            <select name="cfgId" class="form-select" required>
+                <option th:each="c : ${configs}" th:value="${c.nvhId}" th:text="${c.nvhName}"></option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label>Giá trị:</label>
+            <input name="value" type="text" class="form-control" placeholder="Ví dụ: S, M, L / Đỏ, Đen…" required>
+        </div>
+
+        <div class="col-md-4 d-flex align-items-end">
+            <button class="btn btn-success w-100">Thêm</button>
+        </div>
+    </form>
+
+    <hr>
+
+    <h4>Danh sách cấu hình</h4>
+
+    <table class="table table-bordered mt-3">
+        <thead>
+        <tr>
+            <th>Cấu hình</th>
+            <th>Giá trị</th>
+            <th>Xóa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="pc : ${productConfigs}">
+            <td th:text="${pc.nvhConfig.nvhName}">Size</td>
+            <td th:text="${pc.nvhValue}">M</td>
+            <td>
+                <a class="btn btn-danger btn-sm"
+                   th:href="@{'/admin/product-config/delete/' + ${pc.nvhId} + '/' + ${product.nvhId}}">
+                    Xóa
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

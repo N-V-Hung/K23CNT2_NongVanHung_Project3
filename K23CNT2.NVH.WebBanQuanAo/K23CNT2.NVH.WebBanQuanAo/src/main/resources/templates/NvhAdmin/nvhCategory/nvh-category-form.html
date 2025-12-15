@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="nvhLayout/nvh-admin-layout :: content">
+
+<div class="container mt-4">
+
+    <h3 class="mb-3 text-primary">
+        <span th:if="${nvhCategory.nvhId == null}">➕ Thêm Danh Mục</span>
+        <span th:if="${nvhCategory.nvhId != null}">✏️ Sửa Danh Mục</span>
+    </h3>
+
+    <form th:action="@{/nvh-admin/categories/save}" th:object="${nvhCategory}" method="post">
+
+        <input type="hidden" th:field="*{nvhId}">
+
+        <div class="mb-3">
+            <label class="form-label">Tên Danh Mục</label>
+            <input class="form-control" th:field="*{nvhName}" placeholder="Nhập tên danh mục" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Ghi Chú</label>
+            <input class="form-control" th:field="*{nvhNotes}" placeholder="Nhập ghi chú">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Icon</label>
+            <input class="form-control" th:field="*{nvhIcon}" placeholder="Ví dụ: fa fa-home">
+        </div>
+
+        <button class="btn btn-primary" type="submit">💾 Lưu</button>
+        <a class="btn btn-secondary" href="/nvh-admin/categories">⬅ Quay lại</a>
+
+    </form>
+
+</div>
+
+</html>

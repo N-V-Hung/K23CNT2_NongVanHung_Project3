@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý đánh giá</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-4">
+    <h2 class="mb-4">Quản lý đánh giá sản phẩm</h2>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Sản phẩm</th>
+            <th>Khách hàng</th>
+            <th>Nội dung</th>
+            <th>Sao</th>
+            <th>Ngày</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="rv : ${reviews}">
+            <td th:text="${rv.nvhId}"></td>
+            <td th:text="${rv.nvhIdproduct}"></td>
+            <td th:text="${rv.customer != null ? rv.customer.nvhName : 'Ẩn danh'}"></td>
+            <td th:text="${rv.nvhComment}"></td>
+            <td th:text="${rv.nvhRating}"></td>
+            <td th:text="${#dates.format(rv.nvhCreatedDate, 'dd/MM/yyyy')}"></td>
+
+            <td>
+                <span th:if="${rv.nvhIsapproved == 1}" class="badge bg-success">Hiển thị</span>
+                <span th:if="${rv.nvhIsapproved == 0}" class="badge bg-secondary">Đã ẩn</span>
+            </td>
+
+            <td>
+                <a th:href="@{'/admin/reviews/approve/' + ${rv.nvhId}}" class="btn btn-sm btn-success">Hiện</a>
+                <a th:href="@{'/admin/reviews/hide/' + ${rv.nvhId}}" class="btn btn-sm btn-warning">Ẩn</a>
+                <a th:href="@{'/admin/reviews/delete/' + ${rv.nvhId}}" class="btn btn-sm btn-danger">Xóa</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:insert="nvhLayout/nvh-admin-layout :: head('Danh sách đơn hàng')"></div>
+</head>
+
+<body>
+
+<div th:insert="nvhLayout/nvh-admin-layout :: sidebar('order')"></div>
+<div th:insert="nvhLayout/nvh-admin-layout :: topbar"></div>
+
+<div class="nvh-content">
+
+    <h2 class="text-primary mb-3">📦 Quản lý đơn hàng</h2>
+
+    <table class="table table-bordered mt-4">
+        <thead class="table-warning">
+        <tr>
+            <th>Mã đơn</th>
+            <th>ID khách</th>
+            <th>Tổng tiền</th>
+            <th>Ngày đặt</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="o : ${orders}">
+            <td th:text="${o.nvhCode}"></td>
+            <td th:text="${o.nvhIdcustomer}"></td>
+            <td th:text="${o.nvhTotalMoney} + ' đ'"></td>
+            <td th:text="${#dates.format(o.nvhOrdersDate, 'dd/MM/yyyy HH:mm')}"></td>
+
+            <td>
+                <span th:switch="${o.nvhStatus?.name()}">
+                    <span th:case="'PENDING'"  class="badge bg-warning">⏳ Chờ xác nhận</span>
+                    <span th:case="'PAID'"     class="badge bg-info">💵 Đã thanh toán</span>
+                    <span th:case="'SHIPPING'" class="badge bg-primary">🚚 Đang giao</span>
+                    <span th:case="'DONE'"     class="badge bg-success">✔ Hoàn thành</span>
+                    <span th:case="'CANCEL'"   class="badge bg-danger">❌ Đã hủy</span>
+                </span>
+            </td>
+
+            <td>
+                <a class="btn btn-info btn-sm"
+                   th:href="@{'/nvh-admin/orders/' + ${o.nvhId}}">
+                    Xem
+                </a>
+
+                <a class="btn btn-danger btn-sm"
+                   th:href="@{'/nvh-admin/orders/delete/' + ${o.nvhId}}"
+                   onclick="return confirm('Xóa đơn hàng này?');">
+                    Xóa
+                </a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>

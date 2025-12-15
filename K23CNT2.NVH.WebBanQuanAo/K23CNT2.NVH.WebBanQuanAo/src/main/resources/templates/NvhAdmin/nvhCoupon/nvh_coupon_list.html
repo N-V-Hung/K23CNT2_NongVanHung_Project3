@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Danh Sách Mã Giảm Giá</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+    <h2 class="mb-3">Quản lý mã giảm giá</h2>
+    <a href="/nvh-admin/coupons/add" class="btn btn-primary mb-3">+ Thêm mã</a>
+
+    <table class="table table-bordered table-hover text-center">
+        <thead class="table-secondary">
+        <tr>
+            <th>ID</th>
+            <th>Mã</th>
+            <th>Loại</th>
+            <th>Giá trị</th>
+            <th>Còn lại</th>
+            <th>Hết hạn</th>
+            <th>Ghi chú</th>
+            <th>Chức năng</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="c : ${nvhCoupons}">
+
+            <td th:text="${c.nvhId}"></td>
+            <td th:text="${c.nvhCode}"></td>
+
+            <td th:text="${c.nvhType}"></td>
+
+            <!-- GIÁ TRỊ — hiển thị an toàn và debug -->
+            <td>
+                <!-- nếu là PERCENT -->
+                <span th:if="${c.nvhType == T(K23CNT2.nvh.WebBanQuanAo.Nvh_Entity.NvhCouponType).PERCENT}"
+                      th:text="${c.nvhValue != null ? (c.nvhValue + '%') : '—'}">
+                </span>
+
+                <!-- nếu là AMOUNT -->
+                <span th:if="${c.nvhType == T(K23CNT2.nvh.WebBanQuanAo.Nvh_Entity.NvhCouponType).AMOUNT}"
+                      th:text="${c.nvhValue != null ? (#numbers.formatDecimal(c.nvhValue,0,'POINT',0,'COMMA') + ' đ') : '—'}">
+                 </span>
+
+                <!-- nếu không xác định type -->
+                <span th:if="${c.nvhType == null}" th:text="${c.nvhValue != null ? c.nvhValue : '—'}"></span>
+            </td>
+
+
+            <!-- SỐ LƯỢNG CÒN LẠI -->
+            <td th:text="${(c.nvhQuantity ?: 0) - (c.nvhUsedCount ?: 0)}"></td>
+
+            <!-- NGÀY HẾT HẠN -->
+            <td th:text="${#dates.format(c.nvhEndDate, 'dd/MM/yyyy')}"></td>
+
+            <td th:text="${c.nvhNotes}"></td>
+
+            <td>
+                <a class="btn btn-warning btn-sm"
+                   th:href="@{'/nvh-admin/coupons/edit/' + ${c.nvhId}}">
+                    Sửa
+                </a>
+
+                <a class="btn btn-danger btn-sm"
+                   th:href="@{'/nvh-admin/coupons/delete/' + ${c.nvhId}}"
+                   onclick="return confirm('Xóa mã này?')">
+                    Xóa
+                </a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+    <a href="/nvh-admin-home" class="btn btn-secondary mb-3">⬅ Quay lại</a>
+
+</div>
+
+</body>
+</html>

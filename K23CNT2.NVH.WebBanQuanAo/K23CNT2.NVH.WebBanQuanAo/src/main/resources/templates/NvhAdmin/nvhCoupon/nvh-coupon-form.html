@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Thêm / Sửa Mã Giảm Giá</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container mt-4">
+
+    <div class="card shadow p-4">
+        <h4 class="mb-3 text-primary"
+            th:text="${nvhCoupon.nvhId != null ? 'Sửa Mã Giảm Giá' : 'Thêm Mã Giảm Giá'}">
+        </h4>
+
+        <form th:action="@{/nvh-admin/coupons/save}" th:object="${nvhCoupon}" method="post">
+
+            <input type="hidden" th:field="*{nvhId}">
+
+            <div class="mb-3">
+                <label>Mã giảm giá</label>
+                <input class="form-control" th:field="*{nvhCode}" required>
+            </div>
+
+            <div class="mb-3">
+                <label>Loại mã</label>
+                <select class="form-control" th:field="*{nvhType}">
+                    <option th:each="t : ${nvhTypes}"
+                            th:value="${t}"
+                            th:text="${t}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label>Giá trị (VD: 10% hoặc 50000)</label>
+                <input type="number" class="form-control" th:field="*{nvhValue}" required>
+            </div>
+
+            <div class="mb-3">
+                <label>Đơn tối thiểu</label>
+                <input type="number" class="form-control" th:field="*{nvhMinOrderAmount}">
+            </div>
+
+            <div class="mb-3">
+                <label>Ngày bắt đầu</label>
+                <input type="date" class="form-control" th:field="*{nvhStartDate}">
+            </div>
+
+            <div class="mb-3">
+                <label>Ngày kết thúc</label>
+                <input type="date" class="form-control" th:field="*{nvhEndDate}">
+            </div>
+
+            <div class="mb-3">
+                <label>Số lượng mã</label>
+                <input type="number" class="form-control" th:field="*{nvhQuantity}">
+            </div>
+
+            <button class="btn btn-primary">Lưu</button>
+            <a href="/nvh-admin/coupons" class="btn btn-secondary">⬅ Quay lại</a>
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
